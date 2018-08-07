@@ -1,0 +1,6 @@
+[user]
+	name = Nikolay Ponich
+	email = n.ponich@gmail.com
+[core]
+	fileMode = false
+	safecrlf = false

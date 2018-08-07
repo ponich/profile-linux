@@ -1,0 +1,33 @@
+#!/bin/zsh
+
+#export TERM=xterm-256color
+
+# редактор по умолчанию
+export VISUAL=subl
+export EDITOR=vim
+
+#  History
+# хранить историю в указанном файле
+export HISTFILE=~/.zsh_history
+# максимальное число команд, хранимых в сеансе
+export HISTSIZE=1000
+export SAVEHIST=$HISTSIZE
+# включить историю команд
+setopt APPEND_HISTORY
+# убрать повторяющиеся команды, пустые строки и пр.
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+
+# plugins
+plugins+=(
+  composer,
+  git,
+  laravel5
+)
+
+
+# themes
+ZSH_THEME="awesomepanda"
+#ZSH_THEME="robbyrussell"
+
