@@ -21,13 +21,6 @@ function! PlugConfigure()
     endfor
 endfunction
 
-" автоустановка плагинов
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
 " исправления проблемы отображения цветовой схемы
 if &term =~ "xterm"
     "256 color —

@@ -11,7 +11,7 @@ dt=$(date '+%Y%m%d_%H%M%S');
 #
 backup(){
     if [ -f ${TMUX_SOURCE} ]; then
-        cp ${TMUX_SOURCE} ${PROFILE_ROOT_PATH}"/backup/tmux_"${dt}".vim"
+        cp ${TMUX_SOURCE} ${PROFILE_ROOT_PATH}"/data/tmux_"${dt}".vim"
         rm ${TMUX_SOURCE}
     fi
 }

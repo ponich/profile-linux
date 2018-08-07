@@ -4,36 +4,64 @@ set -f
 
 # variables
 PROFILE_INDEX=1
-PROFILE_ROOT_PATH=$(dirname $0)
+PROFILE_ROOT_PATH=${PROFILE_ROOT_PATH:-$(realpath $(dirname $0))}
 
-# scripts
-source ${PROFILE_ROOT_PATH}/scripts/getopts.sh
-source ${PROFILE_ROOT_PATH}/scripts/helpers.sh
+# заменяем часть текста или создаем новый в файле
+text_replace_create(){
+	if grep -q ${1} ${3}; then
+		sed -i "/${1}/c\\${2}" ${3}
+	else
+	    echo ${2} >> ${3}
+	fi
+}
 
-# options
-parse_options "[ -f FORCE ]" ${@}
+#
+install_handle_base(){
+    echo "Install base..."
+    source ${PROFILE_ROOT_PATH}/zsh/install.sh
+}
+
+#
+install_handle_vim(){
+    echo "Install vim..."
+    source ${PROFILE_ROOT_PATH}/vim/install.sh >> /dev/null 2>&1
+}
+
+#
+install_handle_tmux(){
+    echo "Install tmux..."
+    source ${PROFILE_ROOT_PATH}/tmux/install.sh >> /dev/null 2>&1
+}
+
+#
+install_handle_all(){
+    install_handle_base
+    install_handle_vim
+    install_handle_tmux
+}
 
 
 menu_level_1(){
     PS3='Mode: '
-    options=("base" "vim" "tmux"  "quit")
+    options=("all" "base" "vim" "tmux"  "quit")
     select opt in "${options[@]}"
     do
         case $opt in
+            "all")
+                install_handle_all
+                break
+            ;;
+
             "base")
-                # git configs
-                # bin path
-                # fix console
-                # fix locale (readme.md)
-                # add alias
+                install_handle_base
             ;;
 
             "vim")
-                source ${PROFILE_ROOT_PATH}/vim/install.sh >> /dev/null 2>&1
+                install_handle_vim
             ;;
 
             "tmux")
-                source ${PROFILE_ROOT_PATH}/tmux/install.sh >> /dev/null 2>&1
+                install_handle_tmux
             ;;
 
             "quit")

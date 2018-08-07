@@ -46,7 +46,7 @@ VIM_DATA=~/.vim
 # резервная копия vimrc файла при необходимости
 backup(){
     if [ -f $VIM_SOURCE ]; then
-        cp ${VIM_SOURCE} ${PROFILE_ROOT_PATH}"/backup/vimrc_"${dt}".vim"
+        cp ${VIM_SOURCE} ${PROFILE_ROOT_PATH}"/data/vimrc_"${dt}".vim"
         rm ${VIM_SOURCE}
     fi
 }
@@ -76,22 +76,11 @@ profile(){
     fi
 }
 
-# исправления работы с цветовой палитрой
-fixcolor(){
-    rcfile=${1:-~/.bashrc}
-
-    if [ -f ${rcfile} ]; then
-        text_replace_create "gruvbox_256palette.sh" "source "${PROFILE_ROOT_PATH}"/scripts/gruvbox_256palette.sh" ${rcfile}
-    fi
-}
-
 #backup
 pushdir
 profile ~/.bashrc
 profile ~/.zshrc
-fixcolor ~/.bashrc
-fixcolor ~/.zshrc
 spell
 rc
 
-vim +PlugInstall +qall
+vim -s ${VIM_SOURCE} +PlugInstall +qall

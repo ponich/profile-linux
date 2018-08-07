@@ -1,5 +1,0 @@
-#!/bin/zsh
-
-# nodejs & npm
-# https://docs.npmjs.com/getting-started/fixing-npm-permissions
-export PATH=~/.npm-global/bin:$PATH
