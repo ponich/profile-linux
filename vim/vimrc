@@ -152,6 +152,7 @@ set termencoding=utf-8
 set fileencodings=utf-8,cp1251
 set spell spelllang=ru
 set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
+set belloff=all
 syntax enable
 filetype plugin indent on
 
