@@ -90,3 +90,6 @@ ZSH_THEME="awesomepanda"
 
 # include aliases
 include_dir ${PROFILE_ZSH_ROOT_PATH}/aliases/
+
+# run tmux
+if [ "$TMUX" = ""  ]; then tmux; fi
