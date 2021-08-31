@@ -24,7 +24,7 @@ install_handle_base(){
 #
 install_handle_vim(){
     echo "Install vim..."
-    source ${PROFILE_ROOT_PATH}/vim/install.sh >> /dev/null 2>&1
+#    source ${PROFILE_ROOT_PATH}/vim/install.sh >> /dev/null 2>&1
 }
 
 #
